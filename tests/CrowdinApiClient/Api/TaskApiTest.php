@@ -4,6 +4,7 @@ namespace CrowdinApiClient\Tests\Api;
 
 use CrowdinApiClient\Model\DownloadFile;
 use CrowdinApiClient\Model\Task;
+use CrowdinApiClient\Model\TaskForUpdate;
 use CrowdinApiClient\ModelCollection;
 
 class TaskApiTest extends AbstractTestApi
@@ -21,6 +22,7 @@ class TaskApiTest extends AbstractTestApi
                         "projectId": 2,
                         "creatorId": 6,
                         "type": 1,
+                        "vendor":null,
                         "status": "todo",
                         "title": "French",
                         "assignees": [
@@ -48,6 +50,7 @@ class TaskApiTest extends AbstractTestApi
                         "deadline": "2019-09-27T07:00:14+00:00",
                         "timeRange": "string",
                         "workflowStepId": 10,
+                        "buyUrl": null,
                         "createdAt": "2019-09-23T09:04:29+00:00",
                         "updatedAt": "2019-09-23T09:04:29+00:00"
                       }
@@ -67,6 +70,7 @@ class TaskApiTest extends AbstractTestApi
         $this->assertCount(1, $tasks);
         $this->assertInstanceOf(Task::class, $tasks[0]);
         $this->assertEquals(2, $tasks[0]->getId());
+        $this->assertEquals(null, $tasks[0]->getBuyUrl());
     }
 
     public function testCreate()
@@ -152,6 +156,7 @@ class TaskApiTest extends AbstractTestApi
                     "projectId": 2,
                     "creatorId": 6,
                     "type": 1,
+                    "vendor":"gengo",
                     "status": "todo",
                     "title": "French",
                     "assignees": [
@@ -187,6 +192,7 @@ class TaskApiTest extends AbstractTestApi
         $task = $this->crowdin->task->get(2, 2);
         $this->assertInstanceOf(Task::class, $task);
         $this->assertEquals(2, $task->getId());
+        $this->assertEquals("gengo", $task->getVendor());
 
         $this->mockRequestPath('/projects/2/tasks/2', '{
                   "data": {
@@ -194,6 +200,7 @@ class TaskApiTest extends AbstractTestApi
                     "projectId": 2,
                     "creatorId": 6,
                     "type": 1,
+                    "vendor":"gengo",
                     "status": "todo",
                     "title": "test edit",
                     "assignees": [
@@ -226,11 +233,19 @@ class TaskApiTest extends AbstractTestApi
                   }
                 }');
 
-        $task->setTitle('test edit');
-        $task = $this->crowdin->task->update($task);
+        $taskForUpdate = new TaskForUpdate($task->getData());
+        $taskForUpdate->setTitle('test edit');
+        $taskForUpdate->setSkipAssignedStrings(true);
+        $taskForUpdate->setSplitFiles(true);
+        $taskForUpdate->setLabelIds([1, 3]);
+        $taskForUpdate->setDateFrom('2021-01-23T09:04:29+00:00');
+        $taskForUpdate->setDateTo('2021-02-12T09:04:29+00:00');
+
+        $task = $this->crowdin->task->update($taskForUpdate);
         $this->assertInstanceOf(Task::class, $task);
         $this->assertEquals(2, $task->getId());
         $this->assertEquals('test edit', $task->getTitle());
+        $this->assertEquals('gengo', $task->getVendor());
     }
 
     public function testDelete()

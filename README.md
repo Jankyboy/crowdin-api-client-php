@@ -6,7 +6,9 @@ The Crowdin PHP client is a lightweight interface to the Crowdin API v2. It prov
 
 Our API is a full-featured RESTful API that helps you to integrate localization into your development process. The endpoints that we use allow you to easily make calls to retrieve information and to execute actions needed.
 
-For more about Crowdin API v2 please see the [documentation](https://support.crowdin.com/api/v2/). 
+For more about Crowdin API v2 see the documentation:
+- [Crowdin](https://support.crowdin.com/api/v2/)
+- [Crowdin Enterprise](https://support.crowdin.com/enterprise/api/)
 
 ## Status
 
@@ -26,8 +28,8 @@ For more about Crowdin API v2 please see the [documentation](https://support.cro
 * [Requirements](#requirements)
 * [Installation](#installation)
 * [Quick Start](#quick-start)
-* [Contribution](#contribution)
 * [Seeking Assistance](#seeking-assistance)
+* [Contributing](#contributing)
 * [License](#license)
 
 ### Requirements
@@ -36,21 +38,9 @@ For more about Crowdin API v2 please see the [documentation](https://support.cro
 
 ## Installation
 
-1. Install via Composer
+Install via Composer
 
-    `composer require crowdin/crowdin-api-client`
-
-2. Download this library to your project's 3rd party libraries path
-
-    ```
-    git clone https://github.com/crowdin/crowdin-api-client-php.git </your-project/libs/crowdin>
-    ```
-
-    and include the library in your project:
-
-    ```php
-    require_once 'path/to/Crowdin.php';
-    ```
+    composer require crowdin/crowdin-api-client
 
 ### Quick Start
 
@@ -93,24 +83,18 @@ For more about Authorization see the [documentation](https://support.crowdin.com
     $crowdin->directory->delete($directory->getProjectId(), $directory->getId());
     ```
 
-### Contribution
-We are happy to accept contributions to the Crowdin PHP client. To contribute please do the following:
-1. Fork the repository on GitHub.
-2. Decide which code you want to submit. Commit your changes and push to the new branch.
-3. Ensure that your code adheres to standard conventions, as used in the rest of the library.
-4. Ensure that there are unit tests for your code.
-5. Submit a pull request with your patch on Github.
+## Seeking Assistance
 
-### Seeking Assistance
-If you find any problems or would like to suggest a feature, please feel free to file an issue on Github at [Issues Page](https://github.com/crowdin/crowdin-api-client-php/issues).
+If you find any problems or would like to suggest a feature, please read the [How can I contribute](/CONTRIBUTING.md#how-can-i-contribute) section in our contributing guidelines.
 
-Need help working with Crowdin PHP client or have any questions?
-[Contact Customer Success Service](https://crowdin.com/contacts).
+Need help working with Crowdin PHP client or have any questions? [Contact](https://crowdin.com/contacts) Customer Success Service.
+
+## Contributing
+
+If you want to contribute please read the [Contributing](/CONTRIBUTING.md) guidelines.
 
 ### License
 <pre>
-Copyright © 2020 Crowdin
-
 The Crowdin PHP client is licensed under the MIT License.
 See the LICENSE file distributed with this work for additional
 information regarding copyright ownership.

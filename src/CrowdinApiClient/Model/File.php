@@ -49,14 +49,14 @@ class File extends BaseModel
     protected $path;
 
     /**
-     * @var integer
-     */
-    protected $revisionId;
-
-    /**
      * @var string
      */
     protected $status;
+
+    /**
+     * @var integer
+     */
+    protected $revisionId;
 
     /**
      * @var string
@@ -72,6 +72,11 @@ class File extends BaseModel
      * @var array
      */
     protected $exportOptions = [];
+
+    /**
+     * @var null|array
+     */
+    protected $excludedTargetLanguages;
 
     /**
      * @var string
@@ -102,6 +107,7 @@ class File extends BaseModel
         $this->updatedAt = (string)$this->getDataProperty('updatedAt');
         $this->importOptions = (array)$this->getDataProperty('importOptions');
         $this->exportOptions = (array)$this->getDataProperty('exportOptions');
+        $this->excludedTargetLanguages = $this->getDataProperty('excludedTargetLanguages') ? (array)$this->getDataProperty('excludedTargetLanguages') : null;
     }
 
     /**
@@ -286,5 +292,21 @@ class File extends BaseModel
     public function setExportOptions(array $exportOptions): void
     {
         $this->exportOptions = $exportOptions;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getExcludedTargetLanguages(): ?array
+    {
+        return $this->excludedTargetLanguages;
+    }
+
+    /**
+     * @param array|null $excludedTargetLanguages
+     */
+    public function setExcludedTargetLanguages(?array $excludedTargetLanguages): void
+    {
+        $this->excludedTargetLanguages = $excludedTargetLanguages;
     }
 }

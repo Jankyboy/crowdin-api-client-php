@@ -11,12 +11,16 @@ use PHPUnit\Framework\TestCase;
  */
 class SourceStringTest extends TestCase
 {
+    /**
+     * @var SourceString
+     */
     public $sourceString;
 
     public $data = [
         'id' => 2814,
         'projectId' => 2,
         'fileId' => 48,
+        'branchId' => 4,
         'identifier' => '6a1821e6499ebae94de4b880fd93b985',
         'text' => 'Not all videos are shown to users. See more',
         'type' => 'text',
@@ -26,6 +30,7 @@ class SourceStringTest extends TestCase
         'revision' => 1,
         'hasPlurals' => false,
         'isIcu' => false,
+        'labelIds' => [1],
         'createdAt' => '2019-09-20T12:43:57+00:00',
         'updatedAt' => '2019-09-20T13:24:01+00:00',
     ];
@@ -43,6 +48,7 @@ class SourceStringTest extends TestCase
         $this->sourceString->setContext($this->data['context']);
         $this->sourceString->setMaxLength($this->data['maxLength']);
         $this->sourceString->setIsHidden($this->data['isHidden']);
+        $this->sourceString->setLabelIds($this->data['labelIds']);
 
         $this->assertEquals($this->data['text'], $this->sourceString->getText());
         $this->assertEquals($this->data['context'], $this->sourceString->getContext());
@@ -55,6 +61,7 @@ class SourceStringTest extends TestCase
         $this->assertEquals($this->data['id'], $this->sourceString->getId());
         $this->assertEquals($this->data['projectId'], $this->sourceString->getProjectId());
         $this->assertEquals($this->data['fileId'], $this->sourceString->getFileId());
+        $this->assertEquals($this->data['branchId'], $this->sourceString->getBranchId());
         $this->assertEquals($this->data['identifier'], $this->sourceString->getIdentifier());
         $this->assertEquals($this->data['text'], $this->sourceString->getText());
         $this->assertEquals($this->data['type'], $this->sourceString->getType());
@@ -64,6 +71,7 @@ class SourceStringTest extends TestCase
         $this->assertEquals($this->data['revision'], $this->sourceString->getRevision());
         $this->assertEquals($this->data['hasPlurals'], $this->sourceString->isHasPlurals());
         $this->assertEquals($this->data['isIcu'], $this->sourceString->isIcu());
+        $this->assertEquals($this->data['labelIds'], $this->sourceString->getLabelIds());
         $this->assertEquals($this->data['createdAt'], $this->sourceString->getCreatedAt());
         $this->assertEquals($this->data['updatedAt'], $this->sourceString->getUpdatedAt());
     }

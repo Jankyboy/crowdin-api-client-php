@@ -24,6 +24,11 @@ class SourceString extends BaseModel
     protected $fileId;
 
     /**
+     * @var ?integer
+     */
+    protected $branchId;
+
+    /**
      * @var string
      */
     protected $identifier;
@@ -69,6 +74,11 @@ class SourceString extends BaseModel
     protected $isIcu;
 
     /**
+     * @var array
+     */
+    protected $labelIds;
+
+    /**
      * @var string
      */
     protected $createdAt;
@@ -88,6 +98,7 @@ class SourceString extends BaseModel
         $this->id = (integer)$this->getDataProperty('id');
         $this->projectId = (integer)$this->getDataProperty('projectId');
         $this->fileId = (integer)$this->getDataProperty('fileId');
+        $this->branchId = $this->getDataProperty('branchId') ? (integer)$this->getDataProperty('branchId') : null;
         $this->identifier = (string)$this->getDataProperty('identifier');
         $this->text = (string)$this->getDataProperty('text');
         $this->type = (string)$this->getDataProperty('type');
@@ -97,6 +108,7 @@ class SourceString extends BaseModel
         $this->revision = (integer)$this->getDataProperty('revision');
         $this->hasPlurals = (bool)$this->getDataProperty('hasPlurals');
         $this->isIcu = (bool)$this->getDataProperty('isIcu');
+        $this->labelIds = (array)$this->getDataProperty('labelIds');
         $this->createdAt = (string)$this->getDataProperty('createdAt');
         $this->updatedAt = (string)$this->getDataProperty('updatedAt');
     }
@@ -123,6 +135,14 @@ class SourceString extends BaseModel
     public function getFileId(): int
     {
         return $this->fileId;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getBranchId(): ?int
+    {
+        return $this->branchId;
     }
 
     /**
@@ -227,6 +247,22 @@ class SourceString extends BaseModel
     public function isIcu(): bool
     {
         return $this->isIcu;
+    }
+
+    /**
+     * @return array
+     */
+    public function getLabelIds(): array
+    {
+        return $this->labelIds;
+    }
+
+    /**
+     * @param array $labelIds
+     */
+    public function setLabelIds(array $labelIds): void
+    {
+        $this->labelIds = $labelIds;
     }
 
     /**

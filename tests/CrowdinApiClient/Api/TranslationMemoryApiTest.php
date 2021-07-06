@@ -75,7 +75,8 @@ class TranslationMemoryApiTest extends AbstractTestApi
                 "defaultProjectId": 0,
                 "projectIds": [
                   2
-                ]
+                ],
+                "createdAt":"2019-09-23T09:04:29+00:00"
               }
             }'
         ]);
@@ -176,8 +177,7 @@ class TranslationMemoryApiTest extends AbstractTestApi
                 "createdAt": "2019-09-23T11:26:54+00:00",
                 "updatedAt": "2019-09-23T11:26:54+00:00",
                 "startedAt": "2019-09-23T11:26:54+00:00",
-                "finishedAt": "2019-09-23T11:26:54+00:00",
-                "eta": "1 second"
+                "finishedAt": "2019-09-23T11:26:54+00:00"
               }
             }'
         ]);
@@ -204,8 +204,7 @@ class TranslationMemoryApiTest extends AbstractTestApi
                 "createdAt": "2019-09-23T11:26:54+00:00",
                 "updatedAt": "2019-09-23T11:26:54+00:00",
                 "startedAt": "2019-09-23T11:26:54+00:00",
-                "finishedAt": "2019-09-23T11:26:54+00:00",
-                "eta": "1 second"
+                "finishedAt": "2019-09-23T11:26:54+00:00"
               }
             }');
 
@@ -252,8 +251,7 @@ class TranslationMemoryApiTest extends AbstractTestApi
                         "createdAt": "2019-09-23T11:51:08+00:00",
                         "updatedAt": "2019-09-23T11:51:08+00:00",
                         "startedAt": "string",
-                        "finishedAt": "string",
-                        "eta": "1 second"
+                        "finishedAt": "string"
                       }
                     }'
         ]);
@@ -285,8 +283,7 @@ class TranslationMemoryApiTest extends AbstractTestApi
                 "createdAt": "2019-09-23T11:51:08+00:00",
                 "updatedAt": "2019-09-23T11:51:08+00:00",
                 "startedAt": "string",
-                "finishedAt": "string",
-                "eta": "1 second"
+                "finishedAt": "string"
               }
             }');
 

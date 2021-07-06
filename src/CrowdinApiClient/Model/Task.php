@@ -29,6 +29,11 @@ class Task extends BaseModel
     protected $type;
 
     /**
+     * @var string|null
+     */
+    protected $vendor;
+
+    /**
      * @var string
      */
     protected $status;
@@ -57,6 +62,11 @@ class Task extends BaseModel
      * @var array
      */
     protected $progress;
+
+    /**
+     * @var array|null
+     */
+    protected $translateProgress;
 
     /**
      * @var string
@@ -114,6 +124,11 @@ class Task extends BaseModel
     protected $workflowStepId;
 
     /**
+     * @var string|null
+     */
+    protected $buyUrl;
+
+    /**
      * @var string
      */
     protected $createdAt;
@@ -136,12 +151,14 @@ class Task extends BaseModel
         $this->projectId = (integer)$this->getDataProperty('projectId');
         $this->creatorId = (integer)$this->getDataProperty('creatorId');
         $this->type = (string)$this->getDataProperty('type');
+        $this->vendor = $this->getDataProperty('vendor') ? (string)$this->getDataProperty('vendor') : null;
         $this->status = (string)$this->getDataProperty('status');
         $this->title = (string)$this->getDataProperty('title');
         $this->assignees = (array)$this->getDataProperty('assignees');
         $this->assignedTeams = (array)$this->getDataProperty('assignedTeams');
         $this->fileIds = (array)$this->getDataProperty('fileIds');
         $this->progress = (array)$this->getDataProperty('progress');
+        $this->translateProgress = $this->getDataProperty('translateProgress') ? (array)$this->getDataProperty('translateProgress') : null;
         $this->sourceLanguageId = (string)$this->getDataProperty('sourceLanguageId');
         $this->targetLanguageId = (string)$this->getDataProperty('targetLanguageId');
         $this->description = (string)$this->getDataProperty('description');
@@ -153,6 +170,7 @@ class Task extends BaseModel
         $this->deadline = (string)$this->getDataProperty('deadline');
         $this->timeRange = (string)$this->getDataProperty('timeRange');
         $this->workflowStepId = (integer)$this->getDataProperty('workflowStepId');
+        $this->buyUrl = $this->getDataProperty('buyUrl') ? (string)$this->getDataProperty('buyUrl') : null;
         $this->createdAt = (string)$this->getDataProperty('createdAt');
         $this->updatedAt = (string)$this->getDataProperty('updatedAt');
         $this->isArchived = (bool)$this->getDataProperty('isArchived');
@@ -188,6 +206,16 @@ class Task extends BaseModel
     public function getType(): int
     {
         return $this->type;
+    }
+
+    public function getVendor(): ?string
+    {
+        return $this->vendor;
+    }
+
+    public function setVendor(string $vendor): void
+    {
+        $this->vendor = $vendor;
     }
 
     /**
@@ -270,6 +298,14 @@ class Task extends BaseModel
     public function getProgress(): array
     {
         return $this->progress;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getTranslateProgress(): ?array
+    {
+        return $this->translateProgress;
     }
 
     /**
@@ -374,6 +410,16 @@ class Task extends BaseModel
     public function getWorkflowStepId(): int
     {
         return $this->workflowStepId;
+    }
+
+    public function getBuyUrl(): ?string
+    {
+        return $this->buyUrl;
+    }
+
+    public function setBuyUrl(string $buyUrl): void
+    {
+        $this->buyUrl = $buyUrl;
     }
 
     /**
